@@ -1,14 +1,14 @@
 {
-  "name": "playyoutube-atom",
+  "name": "playyoutube",
   "main": "./lib/playyoutube-atom",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "0.0.1",
+  "description": "play youtube videos inside atom",
   "keywords": [
   ],
   "activationCommands": {
     "atom-workspace": "playyoutube-atom:toggle"
   },
-  "repository": "https://github.com/atom/playyoutube-atom",
+  "repository": "https://github.com/Hatisoft/playyoutube-atom",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
