@@ -1,4 +1,4 @@
-# package package
+# playyoutube-atom package
 
 A short description of your package.
 

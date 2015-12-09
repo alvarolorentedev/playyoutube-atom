@@ -2,19 +2,19 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Toggle package'
-      'command': 'package:toggle'
+      'label': 'Toggle playyoutube-atom'
+      'command': 'playyoutube-atom:toggle'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'package'
+      'label': 'playyoutube-atom'
       'submenu': [
         {
           'label': 'Toggle'
-          'command': 'package:toggle'
+          'command': 'playyoutube-atom:toggle'
         }
       ]
     ]

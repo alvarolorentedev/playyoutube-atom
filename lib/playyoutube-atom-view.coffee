@@ -1,13 +1,13 @@
 module.exports =
-class PackageView
+class PlayyoutubeAtomView
   constructor: (serializedState) ->
     # Create root element
     @element = document.createElement('div')
-    @element.classList.add('package')
+    @element.classList.add('playyoutube-atom')
 
     # Create message element
     message = document.createElement('div')
-    message.textContent = "The Package package is Alive! It's ALIVE!"
+    message.textContent = "The PlayyoutubeAtom package is Alive! It's ALIVE!"
     message.classList.add('message')
     @element.appendChild(message)
 
