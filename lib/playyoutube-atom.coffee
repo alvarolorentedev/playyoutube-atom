@@ -1,5 +1,7 @@
-PlayyoutubeAtomView = require './playyoutube-atom-view'
 {CompositeDisposable} = require 'atom'
+TestModel = require './Models/TestModel'
+TestView = require './Views/TestView'
+TestViewModel = require './ViewModels/TestViewModel'
 
 module.exports = PlayyoutubeAtom =
   playyoutubeAtomView: null
@@ -7,8 +9,11 @@ module.exports = PlayyoutubeAtom =
   subscriptions: null
 
   activate: (state) ->
-    @playyoutubeAtomView = new PlayyoutubeAtomView(state.playyoutubeAtomViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @playyoutubeAtomView.getElement(), visible: false)
+
+    @model = new TestModel
+    @view = new TestView
+    @viewModel = new TestViewModel(@view.getElement(), @model)
+    @modalPanel = atom.workspace.addModalPanel(item: @viewModel.view, visible: false)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable

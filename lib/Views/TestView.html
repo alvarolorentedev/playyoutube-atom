@@ -1,0 +1,35 @@
+<h2>Property Binding</h2>
+
+<div>
+  {{ buttonMessage }}
+  {{ clicks == 0 ? 'never' : clicks }}
+  <button class="btn" v-on="click: clicks++">Click Me</button>
+</div>
+
+<div>
+  Clicks in words: <strong>{{ clicks | numToWords }}</strong>
+</div>
+
+<h2>Repeating</h2>
+<div> List one:
+  <span class="name" v-repeat="things">{{ name }},</span>
+</div>
+
+<div> List named looping:
+  <span class="name" v-repeat="thing: things">{{ thing.name }},</span>
+</div>
+
+<div> List indexed looping:
+  <span class="name" v-repeat="things">{{ $index }}: {{ name }},</span>
+</div>
+
+<h2>Repeating in a table</h2>
+
+<table>
+  <tr>
+    <td v-repeat="things">{{ name }}</td>
+  </tr>
+  <tr v-repeat="things">
+    <td>{{ name }}</td>
+  </tr>
+</table>
