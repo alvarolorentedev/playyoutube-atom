@@ -1,19 +1,28 @@
 {CompositeDisposable} = require 'atom'
-TestModel = require './Models/TestModel'
-TestView = require './Views/TestView'
-TestViewModel = require './ViewModels/TestViewModel'
+VideoModel =require './Models/VideoModel'
+VideoView = require './Views/VideoView'
+VideoViewModel = require './ViewModels/VideoViewModel'
 
 module.exports = PlayyoutubeAtom =
   playyoutubeAtomView: null
   modalPanel: null
+  editorPanel: null
   subscriptions: null
 
   activate: (state) ->
 
-    @model = new TestModel
-    @view = new TestView
-    @viewModel = new TestViewModel(@view.getElement(), @model)
-    @modalPanel = atom.workspace.addModalPanel(item: @viewModel.view, visible: false)
+    @model = new VideoModel
+    @view = new VideoView
+    @view.getElement().classList.add('float-bottom-right')
+    @viewModel = new VideoViewModel(@view.getElement(), @model)
+    @editor = atom.workspace.getActiveTextEditor()
+    #@modalPanel = atom.workspace.addModalPanel(item: @viewModel.view, visible: false)
+    @editorPanel = atom.workspace.addBottomPanel({item:@viewModel.view}, visible: false)
+    #editor = atom.workspace.getActiveTextEditor()
+    #markerEditor = editor.markScreenPosition(position, [options])
+    #marker = editor.getLastCursor()?.getMarker()
+    #@editorPanel = editor.decorateMarker(marker, {type: 'overlay', item: @viewModel.view})
+
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -22,17 +31,21 @@ module.exports = PlayyoutubeAtom =
     @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:toggle': => @toggle()
 
   deactivate: ->
-    @modalPanel.destroy()
+    #@modalPanel.destroy()
     @subscriptions.dispose()
-    @playyoutubeAtomView.destroy()
+    #@playyoutubeAtomView.destroy()
 
   serialize: ->
-    playyoutubeAtomViewState: @playyoutubeAtomView.serialize()
+    #playyoutubeAtomViewState: @playyoutubeAtomView.serialize()
 
   toggle: ->
     console.log 'PlayyoutubeAtom was toggled!'
-
-    if @modalPanel.isVisible()
-      @modalPanel.hide()
+    if @editorPanel.isVisible()
+      @editorPanel.hide()
     else
-      @modalPanel.show()
+      @editorPanel.show()
+
+    #if @modalPanel.isVisible()
+    #  @modalPanel.hide()
+    #else
+    #  @modalPanel.show()

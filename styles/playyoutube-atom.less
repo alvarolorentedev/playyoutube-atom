@@ -6,3 +6,51 @@
 
 .playyoutube-atom {
 }
+
+
+.float-bottom-right {
+  position: absolute;
+
+  bottom: 0;
+  right: 0;
+
+  border-bottom: none;
+  border-right: none;
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  z-index: 9999;
+  box-sizing: content-box;
+
+  color: @text-color;
+  background-color: @overlay-background-color;
+
+  margin-bottom: 10px;
+  margin-right: 20px;
+  
+  h1 {
+    margin-top: 0;
+    color: @text-color-highlight;
+    font-size: 1.6em;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  atom-text-editor[mini] {
+    margin-bottom: 10px;
+  }
+
+  .message {
+    padding-top: 5px;
+    font-size: 11px;
+  }
+
+  &.mini {
+    width: 200px;
+    font-size: 12px;
+  }
+}
