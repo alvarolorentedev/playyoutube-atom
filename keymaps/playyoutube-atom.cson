@@ -8,4 +8,5 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-workspace':
-  'ctrl-alt-o': 'playyoutube-atom:toggle'
+  'ctrl-y': 'playyoutube-atom:toggle'
+  'ctrl-alt-y': 'playyoutube-atom:toggleDrag'

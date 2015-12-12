@@ -1,5 +1,14 @@
-<iframe width="{{ width }}"
-        height="{{ height }}"
-        src="https://www.youtube.com/embed/{{ id }}"
-        frameborder="0">
-</iframe>
+<div class="playyoutube-atom-container" style='width:{{ width }}px; height:{{ height }}px;'>
+      <input placeholder="Paste a youtube video id here" name="videoId"/>
+  <div class="player-actions">
+
+  </div>
+  <div class="player-frame">
+    <iframe class="draggable"
+            width="{{width}}"
+            height="{{height}}"
+            src="https://www.youtube.com/embed/{{ id }}?rel=0&amp;&amp;showinfo=0"
+            frameborder="0">
+    </iframe>
+</div>
+</div>

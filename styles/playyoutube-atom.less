@@ -4,8 +4,39 @@
 // for a full listing of what's available.
 @import "ui-variables";
 
+@drag-size: 50px;
+@drag-active-size: @drag-size * 2 ;
+
 .playyoutube-atom {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  z-index: 99;
+  position: fixed;
+  top: 0px;
+  left: 0px;
 }
+
+//.playyoutube-atom:hover .playyoutube-atom-container > .player-actions{
+.player-actions.show{
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @drag-size;
+}
+
+
+.player-actions{
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background: white;
+}
+
+
+// .playyoutube-atom:hover .playyoutube-atom-container > .player-actions:hover{
+//   width: @drag-size * 3;
+//   height: @drag-size * 3;
+// }

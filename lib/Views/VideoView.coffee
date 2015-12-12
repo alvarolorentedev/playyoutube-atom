@@ -2,7 +2,7 @@ fs = require 'fs'
 path = require 'path'
 
 module.exports =
-class VideView
+class VideoView
   constructor: ->
     @element = document.createElement('div')
     @element.classList.add('playyoutube-atom')

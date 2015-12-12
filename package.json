@@ -3,10 +3,9 @@
   "main": "./lib/playyoutube-atom",
   "version": "0.0.1",
   "description": "play youtube videos inside atom",
-  "keywords": [
-  ],
+  "keywords": [],
   "activationCommands": {
-    "atom-workspace": "playyoutube-atom:toggle"
+    "atom-workspace": ["playyoutube-atom:toggle", "playyoutube-atom:toggleDrag"]
   },
   "repository": "https://github.com/Hatisoft/playyoutube-atom",
   "license": "MIT",
@@ -14,7 +13,8 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-      "loophole": "^1.0.0",
-      "vue": "^0.11.5"
+    "interact-js": "^2.0.1",
+    "loophole": "^1.0.0",
+    "vue": "^0.11.5"
   }
 }
