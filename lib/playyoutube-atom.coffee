@@ -5,8 +5,7 @@ VideoViewModel = require './ViewModels/VideoViewModel'
 
 module.exports = PlayyoutubeAtom =
   playyoutubeAtomView: null
-  modalPanel: null
-  editorPanel: null
+  videoPanel: null
   subscriptions: null
 
   activate: (state) ->
@@ -15,14 +14,7 @@ module.exports = PlayyoutubeAtom =
     @view = new VideoView
     @view.getElement().classList.add('float-bottom-right')
     @viewModel = new VideoViewModel(@view.getElement(), @model)
-    @editor = atom.workspace.getActiveTextEditor()
-    #@modalPanel = atom.workspace.addModalPanel(item: @viewModel.view, visible: false)
-    @editorPanel = atom.workspace.addBottomPanel({item:@viewModel.view}, visible: false)
-    #editor = atom.workspace.getActiveTextEditor()
-    #markerEditor = editor.markScreenPosition(position, [options])
-    #marker = editor.getLastCursor()?.getMarker()
-    #@editorPanel = editor.decorateMarker(marker, {type: 'overlay', item: @viewModel.view})
-
+    @videoPanel = atom.workspace.addBottomPanel(item:@viewModel.view, visible: false)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -31,21 +23,16 @@ module.exports = PlayyoutubeAtom =
     @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:toggle': => @toggle()
 
   deactivate: ->
-    #@modalPanel.destroy()
+    @videoPanel.destroy()
     @subscriptions.dispose()
-    #@playyoutubeAtomView.destroy()
+    @playyoutubeAtomView.destroy()
 
   serialize: ->
-    #playyoutubeAtomViewState: @playyoutubeAtomView.serialize()
+    playyoutubeAtomViewState: @playyoutubeAtomView.serialize()
 
   toggle: ->
     console.log 'PlayyoutubeAtom was toggled!'
-    if @editorPanel.isVisible()
-      @editorPanel.hide()
+    if @videoPanel.isVisible()
+      @videoPanel.hide()
     else
-      @editorPanel.show()
-
-    #if @modalPanel.isVisible()
-    #  @modalPanel.hide()
-    #else
-    #  @modalPanel.show()
+      @videoPanel.show()
