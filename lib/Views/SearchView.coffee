@@ -2,11 +2,11 @@ fs = require 'fs'
 path = require 'path'
 
 module.exports =
-class VideoView
+class SearchView
   constructor: ->
     @element = document.createElement('div')
     @element.classList.add('playyoutube-atom')
-    @element.innerHTML = fs.readFileSync(path.join(__dirname, 'VideoView.html'))
+    @element.innerHTML = fs.readFileSync(path.join(__dirname, 'SearchView.html'))
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->

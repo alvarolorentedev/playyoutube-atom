@@ -10,5 +10,7 @@ class SearchModel
         @youtube.search @query, numResults, (error, result) ->
             if error
                 console.log(error)
+                return null
             else
                 console.log(JSON.stringify(result, null, numResults))
+                return result.items
