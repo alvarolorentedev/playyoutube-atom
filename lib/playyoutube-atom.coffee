@@ -9,7 +9,6 @@ module.exports = PlayyoutubeAtom =
   subscriptions: null
 
   activate: (state) ->
-
     @model = new VideoModel
     @view = new VideoView
     @view.getElement().classList.add('float-bottom-right')
@@ -31,7 +30,6 @@ module.exports = PlayyoutubeAtom =
     playyoutubeAtomViewState: @playyoutubeAtomView.serialize()
 
   toggle: ->
-    console.log 'PlayyoutubeAtom was toggled!'
     if @videoPanel.isVisible()
       @videoPanel.hide()
     else
