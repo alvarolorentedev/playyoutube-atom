@@ -1,6 +1,6 @@
 <atom-panel class='modal'>
-    <div class='select-list'>
-        <atom-text-editor mini /></atom-text-editor>
+    <div v-on:keyup.esc="close" class='select-list'>
+        <atom-text-editor v-on:keyup.enter="search" mini />{{ query }}</atom-text-editor>
         <div class='select-list'>
             <ol class='list-group'>
                 <li v-for="item in items">
