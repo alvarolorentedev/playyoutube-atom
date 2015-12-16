@@ -3,8 +3,8 @@
         <atom-text-editor v-on:keyup.enter="search" mini />{{ query }}</atom-text-editor>
         <div class='select-list'>
             <ol class='list-group'>
-                <li v-for="item in items">
-                    <!--{{ parentMessage }} - {{ $index }} - {{ item.message }}-->
+                <li v-for="result in results">
+                    {{ result.snippet.title }}
                 </li>
             </ol>
         </div>

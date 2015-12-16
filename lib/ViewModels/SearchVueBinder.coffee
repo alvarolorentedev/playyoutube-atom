@@ -1,14 +1,15 @@
 {allowUnsafeNewFunction} = require 'loophole'
 Vue = require 'vue'
 
-
 module.exports =
-class VideoViewModel
+class SearchVueBinder
     constructor: (@view, @model) ->
         @vue = allowUnsafeNewFunction =>
           new Vue
             el: @view
             data: @model
-            #methods:
-            #    hola: (@msg, @e) ->
-            #        search.find('troloro',2)
+            methods:
+                close: () ->
+                    console.log 'close'
+                search: () ->
+                    @$data.onSearch()

@@ -2,11 +2,12 @@
 
 VideoModel =require './Models/VideoModel'
 VideoView = require './Views/VideoView'
-VideoViewModel = require './ViewModels/VideoViewModel'
+VideoVueBinder = require './ViewModels/VideoVueBinder'
 
 SearchModel =require './Models/SearchModel'
 SearchView = require './Views/SearchView'
 SearchViewModel = require './ViewModels/SearchViewModel'
+SearchVueBinder = require './ViewModels/SearchVueBinder'
 
 module.exports = PlayyoutubeAtom =
   playyoutubeAtomView: null
@@ -17,15 +18,16 @@ module.exports = PlayyoutubeAtom =
   InitializeSearchPanel: ->
       model = new SearchModel
       view = new SearchView
-      viewModel = new SearchViewModel(view.getElement(), model)
-      @searchPanel = atom.workspace.addModalPanel(item:viewModel.view, visible: false)
+      viewModel = new SearchViewModel(model)
+      binder = new SearchVueBinder(view.getElement(), viewModel)
+      @searchPanel = atom.workspace.addModalPanel(item:binder.view, visible: false)
 
   InitializeVideoPanel: ->
       model = new VideoModel
       view = new VideoView
       view.getElement().classList.add('float-bottom-right')
-      viewModel = new VideoViewModel(view.getElement(), model)
-      @videoPanel = atom.workspace.addBottomPanel(item:viewModel.view, visible: false)
+      binder = new VideoVueBinder(view.getElement(), model)
+      @videoPanel = atom.workspace.addBottomPanel(item:binder.view, visible: false)
 
   activate: (state) ->
     this.InitializeSearchPanel()
