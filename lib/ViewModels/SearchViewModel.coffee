@@ -3,8 +3,8 @@ module.exports =
 class SearchViewModel
     constructor: (model) ->
         @model = model
+        @query = "holaaaaaaaaaa";
         model.init()
-        @query = 'hello world'
         @results = []
 
     onSearch: () ->
