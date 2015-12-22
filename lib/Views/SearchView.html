@@ -3,10 +3,9 @@
         <input class="user-input native-key-bindings" type="text" v-model="query" v-on:keyup.enter="search">
         <div class='select-list'>
             <ol class='list-group'>
-                <li v-for="result in results">
-                    {{ result.snippet.title }}
-                </li>
+                <li v-for="result in results">{{ $index }} - {{ result.title }} - video</li>
             </ol>
         </div>
+    </div>
     </div>
 </atom-panel>
