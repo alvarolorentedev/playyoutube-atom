@@ -5,7 +5,7 @@ module.exports =
 class VideoView
   constructor: ->
     @element = document.createElement('div')
-    @element.classList.add('playyoutube-atom')
+    @element.classList.add('video-frame')
     @element.innerHTML = fs.readFileSync(path.join(__dirname, 'VideoView.html'))
 
   # Returns an object that can be retrieved when package is activated

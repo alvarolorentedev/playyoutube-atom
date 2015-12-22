@@ -25,7 +25,6 @@ module.exports = PlayyoutubeAtom =
   InitializeVideoPanel: ->
       model = new VideoModel
       view = new VideoView
-      view.getElement().classList.add('float-bottom-right')
       binder = new VideoVueBinder(view.getElement(), model)
       @videoPanel = atom.workspace.addBottomPanel(item:binder.view, visible: false)
 

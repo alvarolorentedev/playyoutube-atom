@@ -1,6 +1,6 @@
 <atom-panel class='modal'>
     <div v-on:keyup.esc="close" class='select-list'>
-        <my-text v-on:keyup.enter="search" :text.sync="query"></my-text>
+        <input class="user-input native-key-bindings" type="text" v-model="query" v-on:keyup.enter="search">
         <div class='select-list'>
             <ol class='list-group'>
                 <li v-for="result in results">
