@@ -42,7 +42,9 @@ module.exports = PlayyoutubeAtom =
       @subscriptions = new CompositeDisposable
 
       # Register command that toggles this view
-      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:toggle': => @toggle()
+      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:search': => @toggle()
+      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:hide': => @VideoFrameVisibility(false)
+      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:close': => @VideoFrameVisibility(false)
       @subscriptions.add @eventHandler.onViewVideoFrame (visible) => @VideoFrameVisibility(visible)
       @subscriptions.add @eventHandler.onViewSearchFrame (visible) => @SearchFrameVisibility(visible)
 

@@ -6,7 +6,7 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "playyoutube-atom:toggle"
+    "atom-workspace": "playyoutube-atom:search"
   },
   "repository": "https://github.com/Hatisoft/playyoutube-atom",
   "license": "MIT",

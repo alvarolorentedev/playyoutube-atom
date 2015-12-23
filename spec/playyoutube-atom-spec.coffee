@@ -12,7 +12,7 @@ describe "PlayyoutubeAtom", ->
     workspaceElement = atom.views.getView(atom.workspace)
     activationPromise = atom.packages.activatePackage('playyoutube-atom')
 
-  describe "when the playyoutube-atom:toggle event is triggered", ->
+  describe "when the playyoutube-atom:search event is triggered", ->
     it "hides and shows the modal panel", ->
       # Before the activation event the view is not on the DOM, and no panel
       # has been created
@@ -20,7 +20,7 @@ describe "PlayyoutubeAtom", ->
 
       # This is an activation event, triggering it will cause the package to be
       # activated.
-      atom.commands.dispatch workspaceElement, 'playyoutube-atom:toggle'
+      atom.commands.dispatch workspaceElement, 'playyoutube-atom:search'
 
       waitsForPromise ->
         activationPromise
@@ -33,7 +33,7 @@ describe "PlayyoutubeAtom", ->
 
         playyoutubeAtomPanel = atom.workspace.panelForItem(playyoutubeAtomElement)
         expect(playyoutubeAtomPanel.isVisible()).toBe true
-        atom.commands.dispatch workspaceElement, 'playyoutube-atom:toggle'
+        atom.commands.dispatch workspaceElement, 'playyoutube-atom:search'
         expect(playyoutubeAtomPanel.isVisible()).toBe false
 
     it "hides and shows the view", ->
@@ -49,7 +49,7 @@ describe "PlayyoutubeAtom", ->
 
       # This is an activation event, triggering it causes the package to be
       # activated.
-      atom.commands.dispatch workspaceElement, 'playyoutube-atom:toggle'
+      atom.commands.dispatch workspaceElement, 'playyoutube-atom:search'
 
       waitsForPromise ->
         activationPromise
@@ -58,5 +58,5 @@ describe "PlayyoutubeAtom", ->
         # Now we can test for view visibility
         playyoutubeAtomElement = workspaceElement.querySelector('.playyoutube-atom')
         expect(playyoutubeAtomElement).toBeVisible()
-        atom.commands.dispatch workspaceElement, 'playyoutube-atom:toggle'
+        atom.commands.dispatch workspaceElement, 'playyoutube-atom:search'
         expect(playyoutubeAtomElement).not.toBeVisible()

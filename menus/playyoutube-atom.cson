@@ -3,7 +3,15 @@
   'atom-text-editor': [
     {
       'label': 'Toggle playyoutube-atom'
-      'command': 'playyoutube-atom:toggle'
+      'command': 'playyoutube-atom:search'
+    },
+    {
+      'label': 'Hide playyoutube-atom player'
+      'command': 'playyoutube-atom:hide'
+    },
+    {
+      'label': 'Close playyoutube-atom player'
+      'command': 'playyoutube-atom:close'
     }
   ]
 'menu': [
@@ -14,7 +22,15 @@
       'submenu': [
         {
           'label': 'Toggle'
-          'command': 'playyoutube-atom:toggle'
+          'command': 'playyoutube-atom:search'
+        },
+        {
+          'label': 'Hide player'
+          'command': 'playyoutube-atom:hide'
+        },
+        {
+          'label': 'Close player'
+          'command': 'playyoutube-atom:close'
         }
       ]
     ]

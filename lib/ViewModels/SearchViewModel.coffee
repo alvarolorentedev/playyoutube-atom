@@ -5,17 +5,20 @@ class SearchViewModel
         @model = model
         @query = null
         @selected = 0
+        @state = "initial"
         @results = [{"snippet" : {"title": "", "description": "", "thumbnails": { "default" : {"url" : ""}}}}]
         model.init()
 
     onSearch: () ->
         that = this
-        console.log ('search for ' + @query)
+        @state = "loading"
         search = @model.find(@query, 10)
         search
             .then (res) ->
                 that.results = res
+                that.state = "ready"
             .catch (err) ->
+                that.state = "error"
                 console.log(err)
 
     onSelectPrevious: () ->
