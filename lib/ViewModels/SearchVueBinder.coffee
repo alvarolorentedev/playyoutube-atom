@@ -5,11 +5,20 @@ module.exports =
 class SearchVueBinder
     constructor: (@view, @model) ->
         @vue = allowUnsafeNewFunction =>
-          new Vue
-            el: @view
-            data: @model
-            methods:
-                close: () ->
-                    console.log 'close'
-                search: () ->
-                    @$data.onSearch()
+            that=this
+            new Vue
+                el: @view
+                data: @model
+                methods:
+                    close: () ->
+                        @$data.onClose()
+                    search: () ->
+                        @$data.onSearch()
+                    up: () ->
+                        @$data.onSelectPrevious()
+                    down: () ->
+                        @$data.onSelectNext()
+                    play: () ->
+                        @$data.onPlayVideo()
+                    select: (index) ->
+                        @$data.onSelectIndex(index)

@@ -1,7 +1,10 @@
 {CompositeDisposable} = require 'atom'
 
+EventHandler =require './Helpers/PlayyoutubeEventHandler'
+
 VideoModel =require './Models/VideoModel'
 VideoView = require './Views/VideoView'
+VideoViewModel = require './ViewModels/VideoViewModel'
 VideoVueBinder = require './ViewModels/VideoVueBinder'
 
 SearchModel =require './Models/SearchModel'
@@ -14,29 +17,34 @@ module.exports = PlayyoutubeAtom =
   videoPanel: null
   searchPanel: null
   subscriptions: null
+  eventHandler: null
 
-  InitializeSearchPanel: ->
+  InitializeSearchPanel: (handler) ->
       model = new SearchModel
       view = new SearchView
-      viewModel = new SearchViewModel(model)
+      viewModel = new SearchViewModel(model, handler)
       binder = new SearchVueBinder(view.getElement(), viewModel)
       @searchPanel = atom.workspace.addModalPanel(item:binder.view, visible: false)
 
-  InitializeVideoPanel: ->
+  InitializeVideoPanel: (handler) ->
       model = new VideoModel
       view = new VideoView
-      binder = new VideoVueBinder(view.getElement(), model)
+      viewModel = new VideoViewModel(model, handler)
+      binder = new VideoVueBinder(view.getElement(), viewModel)
       @videoPanel = atom.workspace.addBottomPanel(item:binder.view, visible: false)
 
   activate: (state) ->
-    this.InitializeSearchPanel()
-    this.InitializeVideoPanel()
+      @eventHandler = new EventHandler
+      this.InitializeSearchPanel(@eventHandler)
+      this.InitializeVideoPanel(@eventHandler)
 
-    # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
-    @subscriptions = new CompositeDisposable
+      # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
+      @subscriptions = new CompositeDisposable
 
-    # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:toggle': => @toggle()
+      # Register command that toggles this view
+      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube-atom:toggle': => @toggle()
+      @subscriptions.add @eventHandler.onViewVideoFrame (visible) => @VideoFrameVisibility(visible)
+      @subscriptions.add @eventHandler.onViewSearchFrame (visible) => @SearchFrameVisibility(visible)
 
   deactivate: ->
     @videoPanel.destroy()
@@ -46,12 +54,21 @@ module.exports = PlayyoutubeAtom =
   serialize: ->
     playyoutubeAtomViewState: @playyoutubeAtomView.serialize()
 
+
+  VideoFrameVisibility: (visible) ->
+    if(visible)
+        @videoPanel.show()
+    else
+        @videoPanel.hide()
+
+  SearchFrameVisibility: (visible) ->
+    if(visible)
+        @searchPanel.show()
+    else
+        @searchPanel.hide()
+
   toggle: ->
-    if @videoPanel.isVisible()
-      @videoPanel.hide()
-    else
-      @videoPanel.show()
     if @searchPanel.isVisible()
-      @searchPanel.hide()
+     @SearchFrameVisibility(false)
     else
-      @searchPanel.show()
+      @SearchFrameVisibility(true)

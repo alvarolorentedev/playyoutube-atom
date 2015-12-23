@@ -1,13 +1,13 @@
-<atom-panel class='modal'>
-    <div v-on:keyup.esc="close" class='select-list'>
-        <input class="user-input native-key-bindings" type="text" v-model="model.query" v-on:keyup.enter="search">
+<atom-panel v-on:keyup.esc="close" v-on:keyup.up="up" v-on:keyup.down="down" v-on:keyup.left="play" v-on:keyup.right="play" class='modal'>
+    <div class='select-list'>
+        <input class="user-input native-key-bindings" type="text" v-model="query" v-on:keyup.enter="search">
         <ol class='list-group'>
             <template v-for="result in results">
-            <li class='two-lines video-result'>
-                <div class='primary-line'>{{result.snippet.title}}</div>
-                <div class='secondary-line'>{{result.snippet.description}}</div>
-                <div class='video-thumb'><img v-bind:src="result.snippet.thumbnails.default.url" height="45" width="50"></div>
-            </li>
+                <li class='two-lines video-result' v-bind:class="{'selected': selected == $index }" v-on:click="select($index)">
+                    <div class='primary-line'>{{result.snippet.title}}</div>
+                    <div class='secondary-line'>{{result.snippet.description}}</div>
+                    <div class='video-thumb'><img v-bind:src="result.snippet.thumbnails.default.url" height="45" width="50"></div>
+                </li>
             </template>
         </ol>
     </div>

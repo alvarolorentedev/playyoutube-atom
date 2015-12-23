@@ -1,21 +1,40 @@
 module.exports =
 class SearchViewModel
-    constructor: (model) ->
+    constructor: (model, eventHandler) ->
+        @eventHandler = eventHandler
         @model = model
-        @query = null;
-        @results = [{"snippet" : {"title": "", "description": "", "thumbnails": { "default" : {"url" : ""}}}}];
+        @query = null
+        @selected = 0
+        @results = [{"snippet" : {"title": "", "description": "", "thumbnails": { "default" : {"url" : ""}}}}]
         model.init()
 
     onSearch: () ->
         that = this
+        console.log ('search for ' + @query)
         search = @model.find(@query, 10)
         search
             .then (res) ->
                 that.results = res
-                #for result in that.results
-                #    console.log(result.snippet.title)
-                #    that.results.push(result)
             .catch (err) ->
                 console.log(err)
 
-    addResults: (res) ->
+    onSelectPrevious: () ->
+        --@selected
+        if @selected < 0
+            @selected = @results.length - 1
+
+    onSelectNext: () ->
+        ++@selected
+        if @selected > (@results.length-1)
+            @selected = 0
+
+    onSelectIndex: (index) ->
+        @selected = index
+
+    onPlayVideo: () ->
+        @eventHandler.VideoChange(@results[@selected].id.videoId)
+        @eventHandler.viewVideoFrame(true)
+        @onClose()
+
+    onClose: () ->
+        @eventHandler.viewSearchFrame(false)
