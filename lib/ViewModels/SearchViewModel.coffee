@@ -3,7 +3,7 @@ class SearchViewModel
     constructor: (model) ->
         @model = model
         @query = null;
-        @results = null;
+        @results = [{"snippet" : {"title": "", "description": "", "thumbnails": { "default" : {"url" : ""}}}}];
         model.init()
 
     onSearch: () ->
@@ -12,7 +12,7 @@ class SearchViewModel
         search
             .then (res) ->
                 that.results = res
-                #for result in res
+                #for result in that.results
                 #    console.log(result.snippet.title)
                 #    that.results.push(result)
             .catch (err) ->

@@ -15,4 +15,5 @@ class SearchModel
                 if error
                     reject error
                 else
+                    console.log(JSON.stringify(result, null, numResults))
                     resolve result.items
