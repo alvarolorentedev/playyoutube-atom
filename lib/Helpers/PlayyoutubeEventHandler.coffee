@@ -11,6 +11,12 @@ class PlayyoutubeEventHandler
     VideoChange: (id) ->
         @emitter.emit 'play-video', id
 
+    onClear: (callback) ->
+        @emitter.on 'clear-control', callback
+
+    clear: () ->
+        @emitter.emit 'clear-control'
+
     onViewVideoFrame: (callback) ->
         @emitter.on 'video-frame-visibility', callback
 

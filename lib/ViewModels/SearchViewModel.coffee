@@ -3,11 +3,16 @@ class SearchViewModel
     constructor: (model, eventHandler) ->
         @eventHandler = eventHandler
         @model = model
+        @model.init()
+        @initialize()
+        that = this
+        @subscription = @eventHandler.onClear () -> that.initialize()
+
+    initialize: () ->
         @query = null
         @selected = 0
         @state = "initial"
         @results = [{"snippet" : {"title": "", "description": "", "thumbnails": { "default" : {"url" : ""}}}}]
-        model.init()
 
     onSearch: () ->
         that = this
@@ -33,6 +38,7 @@ class SearchViewModel
 
     onSelectIndex: (index) ->
         @selected = index
+        @onPlayVideo()
 
     onPlayVideo: () ->
         @eventHandler.VideoChange(@results[@selected].id.videoId)
@@ -41,3 +47,6 @@ class SearchViewModel
 
     onClose: () ->
         @eventHandler.viewSearchFrame(false)
+
+    dispose: () ->
+        @subscription.dispose()
