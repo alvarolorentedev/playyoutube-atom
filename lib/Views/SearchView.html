@@ -9,7 +9,7 @@
             <template v-for="result in results">
                 <li class='two-lines video-result' v-bind:class="{'selected': selected == $index }" v-on:click="select($index)">
                     <div class='primary-line'>{{result.snippet.title}}</div>
-                    <div class='secondary-line'>{{result.snippet.description}}</div>
+                    <div class='secondary-line'>Description: {{result.snippet.description}}</div>
                     <div class='video-thumb'><img v-bind:src="result.snippet.thumbnails.default.url" height="45" width="50"></div>
                 </li>
             </template>
