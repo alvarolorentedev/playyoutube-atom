@@ -1,9 +1,15 @@
 {
   "name": "playyoutube",
   "main": "./lib/playyoutube-atom",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Search and play youtube videos inside atom. Follow your favorite tutorials inside the development environment in a floating window",
-  "keywords": ["youtube", "video", "player", "watch", "search"],
+  "keywords": [
+    "youtube",
+    "video",
+    "player",
+    "watch",
+    "search"
+  ],
   "activationCommands": {
     "atom-workspace": "playyoutube:search"
   },
