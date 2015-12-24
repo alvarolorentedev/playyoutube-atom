@@ -1,7 +1,7 @@
 {
   "name": "playyoutube",
   "main": "./lib/playyoutube-atom",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "play youtube videos inside atom",
   "keywords": [],
   "activationCommands": {
