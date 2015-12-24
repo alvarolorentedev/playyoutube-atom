@@ -1,5 +1,18 @@
 # playyoutube-atom package
 
-A short description of your package.
+Search and play youtube videos inside atom. Follow your favorite tutorials inside the development environment in a floating window
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![playyoutube-atom](https://cloud.githubusercontent.com/assets/3071208/11987290/d6f8e8c0-a9dc-11e5-8d1e-c0ee5a2922e1.gif)
+
+Behaviour:
+- 'playyoutube-atom:search' ('ctrl-shift-y'): Display the search window:
+  - input some search terms and hit enter.
+  - Navigate the results:
+    - Using the mouse.
+    - Using up and down key.
+  - Play video:
+    - Click. 
+    - Using side key. 
+- 'playyoutube-atom:hide' ('ctrl-shift-h'): Hides the player
+- 'playyoutube-atom:show' ('ctrl-shift-j'): Shows the player
+- 'playyoutube-atom:close' ('ctrl-shift-c'): Clear current search and video content
