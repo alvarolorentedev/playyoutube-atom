@@ -1,4 +1,4 @@
-# playyoutube-atom package
+# playyoutube package
 
 Search and play youtube videos inside atom. Follow your favorite tutorials inside the development environment in a floating window
 
