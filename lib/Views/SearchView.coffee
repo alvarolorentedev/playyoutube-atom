@@ -5,7 +5,7 @@ module.exports =
 class SearchView
   constructor: ->
     @element = document.createElement('div')
-    @element.classList.add('playyoutube-atom')
+    @element.classList.add('playyoutube')
     @element.innerHTML = fs.readFileSync(path.join(__dirname, 'SearchView.html'))
 
   # Returns an object that can be retrieved when package is activated

@@ -8,7 +8,7 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-workspace':
-  'ctrl-shift-y': 'playyoutube-atom:search'
-  'ctrl-shift-h': 'playyoutube-atom:hide'
-  'ctrl-shift-j': 'playyoutube-atom:show'
-  'ctrl-shift-c': 'playyoutube-atom:close'
+  'ctrl-shift-y': 'playyoutube:search'
+  'ctrl-shift-h': 'playyoutube:hide'
+  'ctrl-shift-j': 'playyoutube:show'
+  'ctrl-shift-c': 'playyoutube:close'

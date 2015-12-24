@@ -2,43 +2,43 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Open playyoutube-atom search'
-      'command': 'playyoutube-atom:search'
+      'label': 'Open playyoutube search'
+      'command': 'playyoutube:search'
     },
     {
-      'label': 'Hide playyoutube-atom player'
-      'command': 'playyoutube-atom:hide'
+      'label': 'Hide playyoutube player'
+      'command': 'playyoutube:hide'
     },
     {
-      'label': 'Show playyoutube-atom player'
-      'command': 'playyoutube-atom:show'
+      'label': 'Show playyoutube player'
+      'command': 'playyoutube:show'
     },
     {
-      'label': 'Close playyoutube-atom player'
-      'command': 'playyoutube-atom:close'
+      'label': 'Close playyoutube player'
+      'command': 'playyoutube:close'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'playyoutube-atom'
+      'label': 'playyoutube'
       'submenu': [
         {
           'label': 'Open search'
-          'command': 'playyoutube-atom:search'
+          'command': 'playyoutube:search'
         },
         {
           'label': 'Show player'
-          'command': 'playyoutube-atom:show'
+          'command': 'playyoutube:show'
         },
         {
           'label': 'Hide player'
-          'command': 'playyoutube-atom:hide'
+          'command': 'playyoutube:hide'
         },
         {
           'label': 'Close player'
-          'command': 'playyoutube-atom:close'
+          'command': 'playyoutube:close'
         }
       ]
     ]
