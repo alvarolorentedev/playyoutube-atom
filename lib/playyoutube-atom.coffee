@@ -7,6 +7,11 @@ VideoView = require './Views/VideoView'
 VideoViewModel = require './ViewModels/VideoViewModel'
 VideoVueBinder = require './ViewModels/VideoVueBinder'
 
+SettingsModel =require './Models/SettingsModel'
+SettingsView = require './Views/SettingsView'
+SettingsViewModel = require './ViewModels/SettingsViewModel'
+SettingsVueBinder = require './ViewModels/SettingsVueBinder'
+
 SearchModel =require './Models/SearchModel'
 SearchView = require './Views/SearchView'
 SearchViewModel = require './ViewModels/SearchViewModel'
@@ -16,6 +21,7 @@ module.exports = PlayyoutubeAtom =
   playyoutubeAtomView: null
   videoPanel: null
   searchPanel: null
+  settingsPanel: null
   subscriptions: null
   eventHandler: null
   viewModels: []
@@ -28,6 +34,14 @@ module.exports = PlayyoutubeAtom =
       binder = new SearchVueBinder(view.getElement(), viewModel)
       @searchPanel = atom.workspace.addModalPanel(item:binder.view, visible: false)
 
+  InitializeSettingsPanel: (handler) ->
+      model = new SettingsModel
+      view = new SettingsView
+      viewModel = new SettingsViewModel(model, handler)
+      @viewModels.push(viewModel)
+      binder = new SettingsVueBinder(view.getElement(), viewModel)
+      @settingsPanel = atom.workspace.addBottomPanel(item:binder.view, visible: false)
+
   InitializeVideoPanel: (handler) ->
       model = new VideoModel
       view = new VideoView
@@ -38,14 +52,16 @@ module.exports = PlayyoutubeAtom =
 
   activate: (state) ->
       @eventHandler = new EventHandler
-      this.InitializeSearchPanel(@eventHandler)
-      this.InitializeVideoPanel(@eventHandler)
+      @InitializeSettingsPanel(@eventHandler)
+      @InitializeSearchPanel(@eventHandler)
+      @InitializeVideoPanel(@eventHandler)
 
       # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
       @subscriptions = new CompositeDisposable
 
       # Register command that toggles this view
-      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:search': => @toggle()
+      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:settings': => @toggleSettings()
+      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:search': => @toggleSearch()
       @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:hide': => @VideoFrameVisibility(false)
       @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:show': => @VideoFrameVisibility(true)
       @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:close': => @ClearAll()
@@ -70,11 +86,17 @@ module.exports = PlayyoutubeAtom =
     @SearchFrameVisibility(false)
     @eventHandler.clear()
 
-  toggle: ->
+  toggleSearch: ->
     if @searchPanel.isVisible()
       @SearchFrameVisibility(false)
     else
       @SearchFrameVisibility(true)
+
+  toggleSettings: ->
+    if @settingsPanel.isVisible()
+      @settingsPanel.hide()
+    else
+      @settingsPanel.show()
 
   VideoFrameVisibility: (visible) ->
     if(visible)

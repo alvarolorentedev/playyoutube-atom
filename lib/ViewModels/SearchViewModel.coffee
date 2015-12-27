@@ -5,8 +5,7 @@ class SearchViewModel
         @model = model
         @model.init()
         @initialize()
-        that = this
-        @subscription = @eventHandler.onClear () -> that.initialize()
+        @subscription = @eventHandler.onClear () => @initialize()
 
     initialize: () ->
         @query = null
@@ -15,15 +14,14 @@ class SearchViewModel
         @results = [{"snippet" : {"title": "", "description": "", "thumbnails": { "default" : {"url" : ""}}}}]
 
     onSearch: () ->
-        that = this
         @state = "loading"
         search = @model.find(@query, 10)
         search
-            .then (res) ->
-                that.results = res
-                that.state = "ready"
-            .catch (err) ->
-                that.state = "error"
+            .then (res) =>
+                @results = res
+                @state = "ready"
+            .catch (err) =>
+                @state = "error"
                 console.log(err)
 
     onSelectPrevious: () ->

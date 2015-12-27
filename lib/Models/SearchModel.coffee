@@ -9,9 +9,8 @@ class SearchModel
         @youtube.setKey('AIzaSyAZj8aLet_vlpgn6tYW_8m3T6qmEAiILJQ')
 
     find: (query, numResults) ->
-        that = this
-        return new Promise (resolve, reject) ->
-            that.youtube.search query, numResults, (error, result) ->
+        return new Promise (resolve, reject) =>
+            @youtube.search query, numResults, (error, result) ->
                 if error
                     reject error
                 else

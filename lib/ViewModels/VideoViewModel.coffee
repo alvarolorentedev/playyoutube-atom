@@ -7,10 +7,13 @@ class VideoViewModel
         @model = model
         @width = 600
         @height = 400
-        that = this
         @subscriptions = new CompositeDisposable
-        @subscriptions.add @eventHandler.onVideoChange (id) -> that.model.id = id
-        @subscriptions.add @eventHandler.onClear () -> that.model.id = ""
+        @subscriptions.add @eventHandler.onVideoChange (id) => @model.id = id
+        @subscriptions.add @eventHandler.onClear () => @model.id = ""
+        @subscriptions.add @eventHandler.onSettingsChange (settings) =>
+            #console.log ("settings size to:" + $settings.width +" "+ $settings.height)
+            @width = settings.width
+            @height = settings.height
 
     dispose: () ->
         @subscriptions.dispose()

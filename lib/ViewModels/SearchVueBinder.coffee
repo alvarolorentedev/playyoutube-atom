@@ -5,7 +5,6 @@ module.exports =
 class SearchVueBinder
     constructor: (@view, @model) ->
         @vue = allowUnsafeNewFunction =>
-            that=this
             new Vue
                 el: @view
                 data: @model
