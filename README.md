@@ -23,3 +23,4 @@ Todo List:
   - [ ] Search Options.
 - [ ] Serialize Settings.
 - [ ] make video frame draggable
+- [ ] add other streaming providers
