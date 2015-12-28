@@ -22,3 +22,4 @@ Todo List:
   - [x] Resize Video.
   - [ ] Search Options.
 - [ ] Serialize Settings.
+- [ ] make video frame draggable
