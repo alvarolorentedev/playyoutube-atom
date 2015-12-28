@@ -18,7 +18,7 @@ How it works:
 - 'playyoutube-atom:close' ('ctrl-shift-c'): Clear current search and video content
 
 Todo List:
-[] Add Settings.
-  [x] Resize Video.
-  [ ] Search Options.
-[] Serialize Settings.
+- [ ] Add Settings.
+  - [x] Resize Video.
+  - [ ] Search Options.
+- [ ] Serialize Settings.
