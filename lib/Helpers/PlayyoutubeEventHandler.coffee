@@ -29,11 +29,17 @@ class PlayyoutubeEventHandler
     viewSearchFrame: (visible) ->
         @emitter.emit 'search-frame-visibility', visible
 
-    onSettingsChange: (callback) ->
-        @emitter.on 'settings-change', callback
+    onVideoSettingsChange: (callback) ->
+        @emitter.on 'video-settings-change', callback
 
-    SettingsChange: (settings) ->
-        @emitter.emit 'settings-change', settings
+    videoSettingsChange: (settings) ->
+        @emitter.emit 'video-settings-change', settings
+
+    onSearchSettingsChange: (callback) ->
+        @emitter.on 'search-settings-change', callback
+
+    searchSettingsChange: (settings) ->
+        @emitter.emit 'search-settings-change', settings
 
     destroy: ->
         @emitter.dispose()

@@ -12,4 +12,3 @@
   'ctrl-shift-h': 'playyoutube:hide'
   'ctrl-shift-j': 'playyoutube:show'
   'ctrl-shift-c': 'playyoutube:close'
-  'ctrl-shift-x': 'playyoutube:settings'

@@ -1,3 +1,5 @@
+{CompositeDisposable} = require 'event-kit'
+
 module.exports =
 class SearchViewModel
     constructor: (model, eventHandler) ->
@@ -5,7 +7,9 @@ class SearchViewModel
         @model = model
         @model.init()
         @initialize()
-        @subscription = @eventHandler.onClear () => @initialize()
+        @subscriptions = new CompositeDisposable
+        @subscriptions.add @eventHandler.onClear () => @initialize()
+        @subscriptions.add @eventHandler.onSearchSettingsChange (settings) => @model.settings(settings)
 
     initialize: () ->
         @query = null
@@ -15,7 +19,7 @@ class SearchViewModel
 
     onSearch: () ->
         @state = "loading"
-        search = @model.find(@query, 10)
+        search = @model.find(@query)
         search
             .then (res) =>
                 @results = res

@@ -16,10 +16,6 @@
     {
       'label': 'Close playyoutube player'
       'command': 'playyoutube:close'
-    },
-    {
-      'label': 'Settings for playyoutube'
-      'command': 'playyoutube:settings'
     }
   ]
 'menu': [
@@ -43,10 +39,6 @@
         {
           'label': 'Close player'
           'command': 'playyoutube:close'
-        },
-        {
-          'label': 'Settings for playyoutube'
-          'command': 'playyoutube:settings'
         }
       ]
     ]

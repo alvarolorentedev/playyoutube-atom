@@ -10,8 +10,7 @@ class VideoViewModel
         @subscriptions = new CompositeDisposable
         @subscriptions.add @eventHandler.onVideoChange (id) => @model.id = id
         @subscriptions.add @eventHandler.onClear () => @model.id = ""
-        @subscriptions.add @eventHandler.onSettingsChange (settings) =>
-            #console.log ("settings size to:" + $settings.width +" "+ $settings.height)
+        @subscriptions.add @eventHandler.onVideoSettingsChange (settings) =>
             @width = settings.width
             @height = settings.height
 

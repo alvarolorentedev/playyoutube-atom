@@ -7,21 +7,47 @@ VideoView = require './Views/VideoView'
 VideoViewModel = require './ViewModels/VideoViewModel'
 VideoVueBinder = require './ViewModels/VideoVueBinder'
 
-SettingsModel =require './Models/SettingsModel'
-SettingsView = require './Views/SettingsView'
-SettingsViewModel = require './ViewModels/SettingsViewModel'
-SettingsVueBinder = require './ViewModels/SettingsVueBinder'
-
 SearchModel =require './Models/SearchModel'
 SearchView = require './Views/SearchView'
 SearchViewModel = require './ViewModels/SearchViewModel'
 SearchVueBinder = require './ViewModels/SearchVueBinder'
 
 module.exports = PlayyoutubeAtom =
+  config:
+    videoSettings:
+        type: 'object'
+        properties:
+            width:
+                title: 'Width'
+                type: 'integer'
+                default: 800
+            height:
+                title: 'Height'
+                type: 'integer'
+                default: 600
+    searchSettings:
+        type: 'object'
+        properties:
+            numberResults:
+                title: 'Number of results'
+                type: 'integer'
+                default: 10
+            type:
+                title: 'Type of results'
+                type: 'string'
+                enum: ['video', 'channel', 'playlist']
+                default: 'video'
+                order: 5
+            mode:
+                title: 'Content restriction level'
+                type: 'string'
+                enum: ['none', 'moderate', 'strict']
+                default: 'moderate'
+                order: 5
+
   playyoutubeAtomView: null
   videoPanel: null
   searchPanel: null
-  settingsPanel: null
   subscriptions: null
   eventHandler: null
   viewModels: []
@@ -34,14 +60,6 @@ module.exports = PlayyoutubeAtom =
       binder = new SearchVueBinder(view.getElement(), viewModel)
       @searchPanel = atom.workspace.addModalPanel(item:binder.view, visible: false)
 
-  InitializeSettingsPanel: (handler) ->
-      model = new SettingsModel
-      view = new SettingsView
-      viewModel = new SettingsViewModel(model, handler)
-      @viewModels.push(viewModel)
-      binder = new SettingsVueBinder(view.getElement(), viewModel)
-      @settingsPanel = atom.workspace.addBottomPanel(item:binder.view, visible: false)
-
   InitializeVideoPanel: (handler) ->
       model = new VideoModel
       view = new VideoView
@@ -52,7 +70,6 @@ module.exports = PlayyoutubeAtom =
 
   activate: (state) ->
       @eventHandler = new EventHandler
-      @InitializeSettingsPanel(@eventHandler)
       @InitializeSearchPanel(@eventHandler)
       @InitializeVideoPanel(@eventHandler)
 
@@ -60,13 +77,14 @@ module.exports = PlayyoutubeAtom =
       @subscriptions = new CompositeDisposable
 
       # Register command that toggles this view
-      @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:settings': => @toggleSettings()
       @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:search': => @toggleSearch()
       @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:hide': => @VideoFrameVisibility(false)
       @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:show': => @VideoFrameVisibility(true)
       @subscriptions.add atom.commands.add 'atom-workspace', 'playyoutube:close': => @ClearAll()
       @subscriptions.add @eventHandler.onViewVideoFrame (visible) => @VideoFrameVisibility(visible)
       @subscriptions.add @eventHandler.onViewSearchFrame (visible) => @SearchFrameVisibility(visible)
+      @subscriptions.add atom.config.observe 'playyoutube.videoSettings', (value) => @eventHandler.videoSettingsChange(value)
+      @subscriptions.add atom.config.observe 'playyoutube.searchSettings', (value) => @eventHandler.searchSettingsChange(value)
 
   deactivate: ->
     for viewModel in @viewModels
@@ -91,12 +109,6 @@ module.exports = PlayyoutubeAtom =
       @SearchFrameVisibility(false)
     else
       @SearchFrameVisibility(true)
-
-  toggleSettings: ->
-    if @settingsPanel.isVisible()
-      @settingsPanel.hide()
-    else
-      @settingsPanel.show()
 
   VideoFrameVisibility: (visible) ->
     if(visible)
