@@ -22,12 +22,12 @@ Search and play youtube videos inside atom. Follow your favorite tutorials insid
 
 ### Support or Contact
 Having trouble with 'playyoutube'? Any idea of how to improve it?
-Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/Hatisoft/PlayYouTube/issues) and we�ll sort it out.
+Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/Hatisoft/PlayYouTube/issues) and we will sort it out.
 
 ###Todo:
 - [ ] Add Settings.
   - [x] Resize Video.
-  - [ ] Search Options.
+  - [x] Search Options.
 - [ ] Serialize Settings.
 - [ ] make video frame draggable
 - [ ] add other streaming providers
