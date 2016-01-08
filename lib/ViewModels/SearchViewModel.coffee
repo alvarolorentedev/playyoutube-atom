@@ -9,7 +9,8 @@ class SearchViewModel
         @initialize()
         @subscriptions = new CompositeDisposable
         @subscriptions.add @eventHandler.onClear () => @initialize()
-        @subscriptions.add @eventHandler.onSearchSettingsChange (settings) => @model.settings(settings)
+        @subscriptions.add @eventHandler.onSearchSettingsChange (settings) =>
+          @model.settings(settings)
 
     initialize: () ->
         @query = null
@@ -43,9 +44,9 @@ class SearchViewModel
         @onPlayVideo()
 
     onPlayVideo: () ->
-        @eventHandler.VideoChange(@results[@selected].id.videoId)
-        @eventHandler.viewVideoFrame(true)
-        @onClose()
+      @eventHandler.VideoChange(@results[@selected].id)
+      @eventHandler.viewVideoFrame(true)
+      @onClose()
 
     onClose: () ->
         @eventHandler.viewSearchFrame(false)
