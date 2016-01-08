@@ -28,6 +28,5 @@ Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add
 - [ ] Add Settings.
   - [x] Resize Video.
   - [x] Search Options.
-- [ ] Serialize Settings.
+- [x] Serialize Settings.
 - [ ] make video frame draggable
-- [ ] add other streaming providers
