@@ -25,8 +25,4 @@ Having trouble with 'playyoutube'? Any idea of how to improve it?
 Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/Hatisoft/PlayYouTube/issues) and we will sort it out.
 
 ###Todo:
-- [ ] Add Settings.
-  - [x] Resize Video.
-  - [x] Search Options.
-- [x] Serialize Settings.
 - [ ] make video frame draggable

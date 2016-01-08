@@ -35,8 +35,8 @@ module.exports = PlayyoutubeAtom =
             type:
                 title: 'Type of results'
                 type: 'string'
-                enum: ['video', 'channel', 'playlist']
-                default: 'video'
+                enum: ['video,channel,playlist','video', 'channel', 'playlist']
+                default: 'video,channel,playlist'
                 order: 5
             mode:
                 title: 'Content restriction level'
