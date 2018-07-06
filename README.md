@@ -1,4 +1,4 @@
-# playyoutube package
+# ![logomakr_0iwknv](https://user-images.githubusercontent.com/3071208/42363375-bcf912a2-80f7-11e8-999b-82e107a3d1af.png)
 
 Search and play youtube videos inside atom. Follow your favorite tutorials inside the development environment in a floating window
 
