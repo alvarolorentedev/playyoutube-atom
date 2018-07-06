@@ -26,3 +26,7 @@ Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add
 
 ###Todo:
 - [ ] make video frame draggable
+
+### Logo
+
+Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Makr">LogoMakr.com</a> https://logomakr.com/0IWkNv
