@@ -1,6 +1,6 @@
 <atom-panel v-on:keyup.esc="close" v-on:keyup.up="up" v-on:keyup.down="down" v-on:keyup.left="play" v-on:keyup.right="play" class='modal'>
     <div class='select-list'>
-        <input class="user-input native-key-bindings" type="text" v-model="query" v-on:keyup.enter="search">
+        <input id="yt-searchbar" class="user-input native-key-bindings" type="text" v-model="query" v-on:keyup.enter="search">
         <div v-show="state == 'initial'">Search your video, and we will display the results.</div>
        <div v-show="state == 'loading'" class='loading'>
           <span class='loading-message'>Searching in youtube.</span>

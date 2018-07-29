@@ -109,6 +109,7 @@ module.exports = PlayyoutubeAtom =
       @SearchFrameVisibility(false)
     else
       @SearchFrameVisibility(true)
+      document.getElementById('yt-searchbar').focus()
 
   VideoFrameVisibility: (visible) ->
     if(visible)
