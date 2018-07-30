@@ -46,11 +46,3 @@ describe('search should', () => {
         await expect(search.find(query)).rejects.toEqual("error")
     });
 })
-
-// find: (query) ->
-// return new Promise (resolve, reject) =>
-//     @youtube.search query, @numberResults, (error, result) ->
-//         if error
-//             reject error
-//         else
-//             resolve result.items
