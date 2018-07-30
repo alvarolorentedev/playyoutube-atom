@@ -10,6 +10,12 @@
     "watch",
     "search"
   ],
+  "scripts": {
+    "test": "jest",
+    "test:dev": "jest --watchAll spec/unit",
+    "test:int": "jest test/integration",
+    "test:cov": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
   "activationCommands": {
     "atom-workspace": "playyoutube:search"
   },
@@ -19,9 +25,20 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "event-kit": "^1.5.0",
     "loophole": "^1.1.0",
     "vue": "^1.0.12",
-    "youtube-node": "^1.3.0",
-    "event-kit": "^1.5.0"
+    "youtube-node": "^1.3.0"
+  },
+  "devDependencies": {
+    "coveralls": "3.0.2",
+    "jest": "23.4.2"
+  },
+  "jest": {
+    "testMatch": [
+      "**/spec/**/*-test.js"
+    ],
+    "testEnvironment": "node",
+    "automock": false
   }
 }
