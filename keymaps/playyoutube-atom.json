@@ -1,0 +1,8 @@
+{
+  "atom-workspace": {
+    "ctrl-shift-y": "playyoutube:search",
+    "ctrl-shift-h": "playyoutube:hide",
+    "ctrl-shift-j": "playyoutube:show",
+    "ctrl-shift-c": "playyoutube:close",
+  }
+}

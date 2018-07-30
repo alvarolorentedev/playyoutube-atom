@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle playyoutube-atom",
+        "command": "playyoutube-atom:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "playyoutube-atom",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "playyoutube-atom:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
