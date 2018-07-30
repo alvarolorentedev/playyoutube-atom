@@ -2,8 +2,20 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Toggle playyoutube-atom",
-        "command": "playyoutube-atom:toggle"
+        "label": "Open playyoutube search",
+        "command": "playyoutube:search"
+      },
+      {
+        "label": "Hide playyoutube player",
+        "command": "playyoutube:hide"
+      },
+      {
+        "label": "Show playyoutube player",
+        "command": "playyoutube:show"
+      },
+      {
+        "label": "Close playyoutube player",
+        "command": "playyoutube:close"
       }
     ]
   },
@@ -12,11 +24,23 @@
       "label": "Packages",
       "submenu": [
         {
-          "label": "playyoutube-atom",
+          "label": "playyoutube",
           "submenu": [
             {
-              "label": "Toggle",
-              "command": "playyoutube-atom:toggle"
+              "label": "Open search",
+              "command": "playyoutube:search"
+            },
+            {
+              "label": "Show player",
+              "command": "playyoutube:show"
+            },
+            {
+              "label": "Hide player",
+              "command": "playyoutube:hide"
+            },
+            {
+              "label": "Close player",
+              "command": "playyoutube:close"
             }
           ]
         }
