@@ -1,0 +1,7 @@
+os: osx
+language: node_js
+sudo: true
+node_js:
+  - node
+script:
+  - yarn test:cov
