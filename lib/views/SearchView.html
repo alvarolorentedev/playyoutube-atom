@@ -1,0 +1,19 @@
+<atom-panel v-on:keyup.esc="close" v-on:keyup.up="up" v-on:keyup.down="down" v-on:keyup.left="play" v-on:keyup.right="play" class='modal'>
+    <div class='select-list'>
+        <input id="yt-searchbar" class="user-input native-key-bindings" type="text" v-model="query" v-on:keyup.enter="search">
+        <div v-show="state == 'initial'">Search your video, and we will display the results.</div>
+       <div v-show="state == 'loading'" class='loading'>
+          <span class='loading-message'>Searching in youtube.</span>
+      </div>
+        <ol v-show="state == 'ready'" class='list-group'>
+            <template v-for="result in results">
+                <li class='two-lines video-result' v-bind:class="{'selected': selected == $index }" v-on:click="select($index)">
+                    <div class='primary-line'>{{result.snippet.title}}</div>
+                    <div class='secondary-line'>Description: {{result.snippet.description}}</div>
+                    <div class='video-thumb'><img v-bind:src="result.snippet.thumbnails.default.url" height="45" width="50"></div>
+                </li>
+            </template>
+        </ol>
+        <div v-show="state == 'error'" class='error-message'>Something happend retrieving videos, please check your connection</div>
+    </div>
+</atom-panel>
