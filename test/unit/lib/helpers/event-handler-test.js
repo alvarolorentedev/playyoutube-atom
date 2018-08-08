@@ -4,7 +4,7 @@ jest.mock('event-kit', () => ({
 
 const EventHandler = require('../../../../lib/helpers/event-handler'),
         emmiter = require('event-kit').Emitter,
-        faker = require('Faker')
+        faker = require('faker')
 
 describe('event-handler should', () => {
     emmiterMock = {
