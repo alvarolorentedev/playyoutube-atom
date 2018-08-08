@@ -3,6 +3,8 @@
 
 [![Build Status](https://travis-ci.org/kanekotic/playyoutube-atom.svg?branch=master)](https://travis-ci.org/kanekotic/playyoutube-atom)
 [![Coverage Status](https://coveralls.io/repos/github/kanekotic/playyoutube-atom/badge.svg?branch=master)](https://coveralls.io/github/kanekotic/playyoutube-atom?branch=master)
+[![apm](https://img.shields.io/apm/dm/playyoutube.svg)](https://atom.io/packages/playyoutube)
+[![apm](https://img.shields.io/apm/v/playyoutube.svg)](https://atom.io/packages/playyoutube)
 [![GitHub license](https://img.shields.io/github/license/kanekotic/playyoutube-atom.svg)](https://github.com/kanekotic/playyoutube-atom/blob/master/LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/kanekotic/playyoutube-atom/graphs/commit-activity)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/kanekotic/)
