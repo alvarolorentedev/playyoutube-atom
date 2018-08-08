@@ -1,8 +1,9 @@
-const video = require('../../../../lib/models/video')
+const Video = require('../../../../lib/models/video')
 
 describe('video should', () => {
 
     test('have params exported', async () => {
-        expect(video._.params).toEqual({})
+        let instance = new Video()
+        expect(instance.params).toEqual({})
     })
 })

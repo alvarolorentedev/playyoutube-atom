@@ -1,5 +1,5 @@
 jest.mock('youtube-node', () => jest.fn())
-const search = require('../../../../lib/models/search'),
+const Search = require('../../../../lib/models/search'),
     youtube = require('youtube-node'),
     faker = require('faker')
 
@@ -14,8 +14,8 @@ describe('search should', () => {
     })
 
     test('have init method that initializes youtube', async () => {
-        search.init()
-        expect(youtube).toBeCalled()
+        let search = new Search() 
+        expect(youtube).toBeCalled() 
         expect(youtubeMock.setKey).toBeCalledWith('AIzaSyAZj8aLet_vlpgn6tYW_8m3T6qmEAiILJQ')
     });
 
@@ -25,8 +25,9 @@ describe('search should', () => {
             mode: faker.random.uuid(),
             type: faker.random.uuid()
         }
+        let search = new Search() 
         search.settings(params)
-        expect(search._.numberResults.value).toEqual(params.numberResults)
+        expect(search.numberResults).toEqual(params.numberResults)
         expect(youtubeMock.addParam).toBeCalledWith('safeSearch', params.mode)
         expect(youtubeMock.addParam).toBeCalledWith('type', params.type)
     });
@@ -35,14 +36,16 @@ describe('search should', () => {
         let expectedResult = {items: [faker.random.uuid(),faker.random.uuid()]}
         youtubeMock.search.mockImplementation((_, __, cb) => cb(undefined, expectedResult))
         let query = faker.random.uuid()
+        let search = new Search() 
         let result = await search.find(query)
-        expect(youtubeMock.search).toBeCalledWith(query, search._.numberResults.value, expect.anything()) 
+        expect(youtubeMock.search).toBeCalledWith(query, search.numberResults, expect.anything()) 
         expect(result).toEqual(expectedResult.items)
     });
 
     test('should reject on error finding video', async () => {
         youtubeMock.search.mockImplementation((_, __, cb) => cb("error", undefined))
         let query = faker.random.uuid()
+        let search = new Search()
         await expect(search.find(query)).rejects.toEqual("error")
     });
 })

@@ -17,8 +17,8 @@ describe('search should', () => {
         find: jest.fn()
     }
     let eventHandler = {
-        onClear: faker.random.uuid(),
-        onSearchSettingsChange: faker.random.uuid(),
+        onClear: jest.fn(),
+        onSearchSettingsChange: jest.fn(),
         viewSearchFrame: jest.fn(),
         VideoChange: jest.fn(),
         viewVideoFrame: jest.fn(),
@@ -29,6 +29,11 @@ describe('search should', () => {
     })
 
     test('initial state', async () => {
+        let eventExpected = faker.random.uuid()
+        let eventExpected2 = faker.random.uuid()
+        eventHandler.onClear.mockReturnValue(eventExpected)
+        eventHandler.onSearchSettingsChange.mockReturnValue(eventExpected2)
+
         let search = new Search(model, eventHandler)
 
         expect(search.model).toEqual(model)
@@ -38,8 +43,10 @@ describe('search should', () => {
         expect(search.state).toEqual("initial")
         expect(search.results).toEqual([{"snippet" : {"title": "", "description": "", "thumbnails": { "default" : {"url" : ""}}}}])
         expect(disposable).toBeCalled()
-        expect(disposableMock.add).toBeCalledWith(eventHandler.onClear, search.initialize)
-        expect(disposableMock.add).toBeCalledWith(eventHandler.onSearchSettingsChange, search.settings)
+        expect(eventHandler.onClear).toBeCalled()
+        expect(eventHandler.onSearchSettingsChange).toBeCalled()
+        expect(disposableMock.add).toBeCalledWith(eventExpected)
+        expect(disposableMock.add).toBeCalledWith(eventExpected2)
     })
 
     test('call initialize should reset initial state', async () => {
@@ -163,9 +170,3 @@ describe('search should', () => {
         expect(disposableMock.dispose).toBeCalled()
     })
 })
-
-
-// onPlayVideo: () ->
-// @eventHandler.VideoChange(@results[@selected].id)
-// @eventHandler.viewVideoFrame(true)
-// @onClose()

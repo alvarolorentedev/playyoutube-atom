@@ -25,6 +25,13 @@ describe('search should', () => {
     })
 
     test('initial state', async () => {
+        let eventExpected = faker.random.uuid()
+        let eventExpected2 = faker.random.uuid()
+        let eventExpected3 = faker.random.uuid()
+        eventHandler.onClear.mockReturnValue(eventExpected)
+        eventHandler.onVideoChange.mockReturnValue(eventExpected2)
+        eventHandler.onVideoSettingsChange.mockReturnValue(eventExpected3)
+
         let video = new Video(model, eventHandler)
 
         expect(video.model).toEqual(model)
@@ -32,9 +39,12 @@ describe('search should', () => {
         expect(video.width).toEqual(600)
         expect(video.height).toEqual(400)
         expect(disposable).toBeCalled()
-        expect(disposableMock.add).toBeCalledWith(eventHandler.onVideoChange, video.load)
-        expect(disposableMock.add).toBeCalledWith(eventHandler.onClear, video.initialize)
-        expect(disposableMock.add).toBeCalledWith(eventHandler.onVideoSettingsChange, video.settings)
+        expect(eventHandler.onClear).toBeCalled()
+        expect(eventHandler.onVideoChange).toBeCalled()
+        expect(eventHandler.onVideoSettingsChange).toBeCalled()
+        expect(disposableMock.add).toBeCalledWith(eventExpected)
+        expect(disposableMock.add).toBeCalledWith(eventExpected2)
+        expect(disposableMock.add).toBeCalledWith(eventExpected3)
     })
 
     test('reset params', async () => {
