@@ -31,14 +31,14 @@ Undergoing refactor in master branch
 - 'playyoutube-atom:show' ('ctrl-shift-j'): Shows the player
 - 'playyoutube-atom:close' ('ctrl-shift-c'): Clear current search and video content
 
-### Authors and Contributors
-@kanekotic
-
 ### Support or Contact
 Having trouble with 'playyoutube'? Any idea of how to improve it?
 Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/Hatisoft/PlayYouTube/issues) and we will sort it out.
 
-###Todo:
+### Authors and Contributors
+@kanekotic @pirtleshell
+
+### Todo:
 - [ ] make video frame draggable
 
 ### Logo
