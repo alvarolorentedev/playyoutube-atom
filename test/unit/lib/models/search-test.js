@@ -9,14 +9,15 @@ describe('search should', () => {
         addParam: jest.fn(),
         search: jest.fn()
     }
+    let key = faker.random.uuid()
     beforeEach(() => {
         youtube.mockImplementation(() => youtubeMock)
     })
 
     test('have init method that initializes youtube', async () => {
-        let search = new Search() 
+        new Search(key) 
         expect(youtube).toBeCalled() 
-        expect(youtubeMock.setKey).toBeCalledWith('AIzaSyAZj8aLet_vlpgn6tYW_8m3T6qmEAiILJQ')
+        expect(youtubeMock.setKey).toBeCalledWith(key)
     });
 
     test('have settings method that sets configuration values', async () => {
