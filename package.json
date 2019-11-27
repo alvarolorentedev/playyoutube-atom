@@ -1,7 +1,7 @@
 {
   "name": "playyoutube",
   "main": "./lib/playyoutube-atom",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Search and play youtube videos inside atom. Follow your favorite tutorials inside the development environment in a floating window",
   "keywords": [
     "youtube",
