@@ -33,7 +33,7 @@ Undergoing refactor in master branch
 
 ### Support or Contact
 Having trouble with 'playyoutube'? Any idea of how to improve it?
-Review our [documentation](https://github.com/Hatisoft/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/Hatisoft/PlayYouTube/issues) and we will sort it out.
+Review our [documentation](https://github.com/kanekotic/PlayYouTube/wiki) or [add issue/recomendation](https://github.com/kanekotic/PlayYouTube/issues) and we will sort it out.
 
 ### Authors and Contributors
 @kanekotic @pirtleshell

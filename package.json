@@ -1,7 +1,7 @@
 {
   "name": "playyoutube",
   "main": "./lib/playyoutube-atom",
-  "version": "2.0.7",
+  "version": "2.0.2",
   "description": "Search and play youtube videos inside atom. Follow your favorite tutorials inside the development environment in a floating window",
   "keywords": [
     "youtube",
@@ -23,7 +23,7 @@
   "activationCommands": {
     "atom-workspace": "playyoutube:search"
   },
-  "repository": "https://github.com/Hatisoft/playyoutube-atom",
+  "repository": "https://github.com/kanekotic/playyoutube-atom",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
