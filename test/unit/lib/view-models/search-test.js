@@ -143,11 +143,13 @@ describe('search should', () => {
 
     test('onSelectIndex should set selected to the index', async () => {
         let search = new Search(model,eventHandler)
-        let number = faker.random.number({ min: 1, max: 100})
 
-        search.onSelectIndex(number)
+        search.onSelectIndex(0)
 
-        expect(search.selected).toEqual(number)
+        expect(search.selected).toEqual(0)
+        expect(eventHandler.VideoChange).toBeCalledWith(search.results[search.selected].id)
+        expect(eventHandler.viewVideoFrame).toBeCalledWith(true)
+        expect(eventHandler.viewSearchFrame).toBeCalledWith(false)
     })
 
     test('onPlayVideo should call eventHandler VideoChange and viewVideoFrame', () => {
